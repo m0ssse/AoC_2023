@@ -4,26 +4,19 @@ def winning_numbers(line):
     numbers=set(int(x) for x in numbers.split())
     return len(winning.intersection(numbers))
 
-def part1(fname):
-    res=0
-    with open(fname) as inputfile:
-        for line in inputfile:
-            ind=line.find(":")
-            val=winning_numbers(line[ind+1:])
-            if val:
-                res+=2**(val-1)
-        return res
-    
-def part2(fname):
+def solve(fname):
     with open(fname) as inputfile:
         lines=inputfile.readlines()
-    res=[1]*len(lines)
+    res1=0
+    res2=[1]*len(lines)
     for i, line in enumerate(lines):
         ind=line.find(":")
         val=winning_numbers(line.strip()[ind+1:])
-        for j in range(i+1,i+1+val):
-            res[j]+=res[i]
-    return sum(res)
+        if val:
+            res1+=2**(val-1)
+        for j in range(i+1, i+1+val):
+            res2[j]+=res2[i]
+    return res1, sum(res2)
     
 fname="day4_input.txt"
-print(part2(fname))
+print(solve(fname))
