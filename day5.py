@@ -34,22 +34,6 @@ class Solution:
             res=min(res, self.x_to_loc(seed))
         return res
     
-    def divide_input_range(self, input_range, mapping):
-        """this method breaks down a given input range into subranges such that each element in a given subrange has the same offset in the mapping"""
-        res=[]
-        while True:
-            for _, range_s_start, range_w in mapping:
-                print(res)
-                if input_range[0]<=range_s_start<=input_range[1]:
-                    res.append([input_range[0], range_s_start-1])
-                    if input_range[0]<=range_s_start<=input_range[1]:
-                        res.append([range_s_start, range_s_start+range_w-1])
-                        input_range[0]=range_s_start+range_w
-                        break
-                    else:
-                        res.append([range_s_start, input_range[1]])
-                        return res
-
     def divide_input_range2(self, input_range, mapping):
         res=[]
         changed=True
