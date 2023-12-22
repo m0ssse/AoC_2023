@@ -69,14 +69,15 @@ def simulate(bricks):
 
 def solve(bricks):
     simulate(bricks)
-    res1= []
+    res1=0
     for brick in bricks:
         canDisintegrate=True
         for brick2 in brick.supported_bricks:
             if len(brick2.supporting_bricks)==1:
                 canDisintegrate=False
         if canDisintegrate:
-            res1.append(brick)
+            res+=1
+    print(res1)
     res2=0
     for brick_to_disintegrate in bricks:
         helper=set()
