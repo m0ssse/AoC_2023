@@ -58,12 +58,6 @@ def read_input(fname):
             brick_list.append((Brick(end1, end2, i)))
     return brick_list
 
-def disintegrate(brick, res):
-    for brick2 in brick.supported_bricks:
-        res.add(brick2.id)
-        disintegrate(brick2, res)
-
-
 def simulate(bricks):
     bricks_by_z_coordinate=sorted(bricks, key=lambda brick: brick.z)
     occupied_squares={} #keys=coordinates, values=bricks
